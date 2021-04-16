@@ -26,7 +26,7 @@ let fetchData = async ()=>{
     
     setInterval(()=>{
         getdata(data);
-    }, 6000);
+    }, 9000);
 }
 fetchData()
 
@@ -40,7 +40,6 @@ function getdata(data){
     let quotes = arr.push(data.quotes[rand]);
     arr.forEach((res)=>{
        let txt = res.text;
-       getlength(txt.length)
        let aut = res.author;
        let tag = res.tag;
        cardcont.innerHTML = `
@@ -94,19 +93,20 @@ function playAudio(){
     let playbtn = document.querySelector(".play");
     let stopbtn = document.querySelector(".stop");
     let randaudio = Math.floor((Math.random() * music.length));
-    let audio  = new Audio(music[randaudio]);
+    let audio  = new Audio();
     audio.src = music[randaudio]
     console.log(audio);
     audio.play();
-
+    audio.loop = true;
     stopbtn.onclick = (e)=>{
         audio.pause();
         audio.currentTime = 0;
     }
     playbtn.onclick = (e)=>{
         audio.play();
-        audio.currentTime = 0;
+        // audio.currentTime = 0;
     }
+    
 }   
 
 
